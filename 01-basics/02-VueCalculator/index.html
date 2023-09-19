@@ -31,23 +31,23 @@
     <div id="app" class="container">
       <div class="row">
         <div class="col">
-          <input type="number" />
+          <input type="number" @input="val1 = $event.target.value"/>
         </div>
 
         <div class="col" style="display: flex; flex-direction: column; font-family: emoji">
-          <label><input type="radio" name="operator" value="sum" /> ➕</label>
-          <label><input type="radio" name="operator" value="subtract" /> ➖</label>
-          <label><input type="radio" name="operator" value="multiply" /> ✖</label>
-          <label><input type="radio" name="operator" value="divide" /> ➗</label>
+          <label><input type="radio" name="operator" value="sum" v-model="method"/> ➕</label>
+          <label><input type="radio" name="operator" value="subtract" v-model="method"/> ➖</label>
+          <label><input type="radio" name="operator" value="multiply" v-model="method"/> ✖</label>
+          <label><input type="radio" name="operator" value="divide" v-model="method"/> ➗</label>
         </div>
 
         <div class="col">
-          <input type="number" />
+          <input type="number" @input="val2 = $event.target.value"/>
         </div>
 
         <div class="col">=</div>
 
-        <output class="col">0</output>
+        <output class="col">{{countedResult}}</output>
       </div>
     </div>
 
