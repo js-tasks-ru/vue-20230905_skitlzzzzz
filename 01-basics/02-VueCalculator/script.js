@@ -13,8 +13,8 @@
      }
    },
 
-   methods: {
-     count() {
+   computed: {
+     countedResult() {
         switch (this.method){
           case "sum":
             return Number(this.val1) + Number(this.val2);
@@ -27,12 +27,6 @@
         }
      }
    },
-
-   computed: {
-     countedResult() {
-       return this.count();
-     }
-   }
  })
 
  const app = createApp(CalcComponent);

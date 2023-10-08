@@ -45,7 +45,12 @@ const FilterEmailComponent = defineComponent({
 
   methods: {
     filterMails() {
-      return emails.filter(item=> item.toLowerCase().includes(this.search));
+      return emails.map(email => {
+        return {
+          email,
+          marked: this.search.length ? email.toLowerCase().includes(this.search.toLowerCase()) : false
+        }
+      })
     }
   },
 

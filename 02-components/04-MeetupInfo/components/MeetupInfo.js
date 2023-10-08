@@ -3,6 +3,35 @@ import { defineComponent } from '../vendor/vue.esm-browser.js';
 export default defineComponent({
   name: 'MeetupInfo',
 
+  props:{
+    organizer: {
+      type: String,
+      required: true
+    },
+    place: {
+      type: String,
+      required: true
+    },
+    date: {
+      type: Date,
+      required: true
+    }
+  },
+
+  computed: {
+    isoDate() {
+      return new Date(this.date).toISOString().split('T')[0];
+    },
+
+    localDate() {
+      return new Date(this.date).toLocaleString(navigator.language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    },
+  },
+
   template: `
     <ul class="meetup-info">
       <li>
@@ -15,7 +44,7 @@ export default defineComponent({
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-        <time datetime="2020-01-01">1 янв. 2020</time>
+        <time :datetime="isoDate">{{ localDate }}</time>
       </li>
     </ul>`,
 });

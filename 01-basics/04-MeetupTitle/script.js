@@ -38,9 +38,15 @@ const TitleComponent = defineComponent({
   },
 
 
-  async updated() {
-    this.findedTitle = await this.findTitle();
-  },
+  watch: {
+    id: {
+      handler(value) {
+        fetchMeetupById(value).then((meetups) => {
+          this.findedTitle = meetups.title;
+        });
+      }
+    }
+  }
 })
 
 const app = createApp(TitleComponent);
