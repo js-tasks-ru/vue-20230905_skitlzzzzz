@@ -41,6 +41,7 @@ export default defineComponent({
           })
           .catch(error => {
             this.error = true;
+            this.loading = false;
             this.errorText = error.message;
           })
       },
