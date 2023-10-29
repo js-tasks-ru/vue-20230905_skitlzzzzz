@@ -6,7 +6,7 @@ export default defineComponent({
   props: {
    count: {
      type: Number,
-     required: true
+     default: 0
    }
   },
 
@@ -20,5 +20,5 @@ export default defineComponent({
 
   // Компонент должен иметь входной параметр и порождать событие
 
-  template: `<button type="button" @click="update">{{count}}</button>`,
+  template: `<button type="button" @click="update">{{ count }}</button>`,
 });
